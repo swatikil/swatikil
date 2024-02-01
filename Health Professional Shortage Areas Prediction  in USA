@@ -1,0 +1,90 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "Dental_data = pd.read_csv(\"BCD_HPSA_FCT_DET_DH.csv\")\n",
+    "Mental_data = pd.read_csv(\"BCD_HPSA_FCT_DET_MH.csv\")\n",
+    "Primarycare_data = pd.read_csv(\"BCD_HPSA_FCT_DET_PC.csv\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Dental_data = Dental_data[['HPSA Name','HPSA ID','Designation Type','HPSA Discipline Class','HPSA Score','HPSA Status','HPSA Geography Identification Number','HPSA Designation Population','Rural Status','HPSA Designation Population Type Description','HPSA Estimated Served Population','HPSA Estimated Underserved Population','HPSA Shortage']]\n",
+    "Mental_data = Mental_data[['HPSA Name','HPSA ID','Designation Type','HPSA Discipline Class','HPSA Score','HPSA Status','HPSA Geography Identification Number','HPSA Designation Population','Rural Status','HPSA Designation Population Type Description','HPSA Estimated Served Population','HPSA Estimated Underserved Population','HPSA Shortage']]\n",
+    "Primarycare_data = Primarycare_data[['HPSA Name','HPSA ID','Designation Type','HPSA Discipline Class','HPSA Score','HPSA Status','HPSA Geography Identification Number','HPSA Designation Population','Rural Status','HPSA Designation Population Type Description','HPSA Estimated Served Population','HPSA Estimated Underserved Population','HPSA Shortage']]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Dental_data1 = Dental_data[Dental_data['HPSA Designation Population']>100]\n",
+    "Mental_data1 = Mental_data[Mental_data['HPSA Designation Population']>100]\n",
+    "Primarycare_data1 = Primarycare_data[Primarycare_data['HPSA Designation Population']>100]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Dental_data1 = Dental_data1.dropna(subset=['Rural Status'])\n",
+    "Mental_data1 = Mental_data1.dropna(subset=['Rural Status'])\n",
+    "Primarycare_data1 = Primarycare_data1.dropna(subset=['Rural Status'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Dental_data1.to_csv('C:/Intro_project/BCD_HPSA_FCT_DET_DH_m.csv')\n",
+    "Mental_data1.to_csv('C:/Intro_project/BCD_HPSA_FCT_DET_MH_m.csv')\n",
+    "Primarycare_data1.to_csv('C:/Intro_project/BCD_HPSA_FCT_DET_PD_m.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
